@@ -1,0 +1,9 @@
+CCOMPILE=mpic++
+CPPFLAGS= -I$(HADOOP_HOME)/src/c++/libhdfs -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+LIB = -L$(HADOOP_HOME)/c++/$(PLATFORM)/lib
+LDFLAGS = -lhdfs -Wno-deprecated -O2
+ 
+all: parmce
+ 
+pagerank: parmce.cpp
+		$(CCOMPILE) parmce.cpp $(CPPFLAGS) $(LIB) $(LDFLAGS) -o parmce
