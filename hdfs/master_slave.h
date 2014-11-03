@@ -30,19 +30,19 @@ vector<vector<string> > * dispatchRan(const char* inDir)
               exit(-1);
        }
 
-       vector<sizedFName> sizedfile;
+       vector<string> sizedfile;
        for(int i=0; i<numFiles; i++)
        {
               if(fileinfo[i].mKind==kObjectKindFile)
               {
-                     sizedFName cur={fileinfo[i].mName, fileinfo[i].mSize};
-                     sizedfile.push_back(cur);
+                     sizedfile.push_back(fileinfo[i].mName);
               }
        }
-	 
+	
+	  sort(sizedfile.begin(), sizedfile.end()); 
 		for(int i=0; i<numFiles; ++i){
 			int tp = i%nslaves;
-			assignment[tp].push_back(sizedfile[i].fname);
+			assignment[tp].push_back(sizedfile[i]);
 			
 		}
        
