@@ -16,6 +16,9 @@ int sldeg, sgdeg, sdeg, eldeg, egdeg, edeg;
 int *S, *E;
 Block b[MAX_B];
 
+bool cmp(const string &a, const string &b){
+	return (a.length()<b.length() && a<b);
+}
 //numFiles = MAX_B, in partition
 vector<vector<string> > * dispatchRan(const char* inDir)
 {
@@ -39,7 +42,7 @@ vector<vector<string> > * dispatchRan(const char* inDir)
               }
        }
 	
-	  sort(sizedfile.begin(), sizedfile.end()); 
+	  sort(sizedfile.begin(), sizedfile.end(), cmp); 
 		for(int i=0; i<numFiles; ++i){
 			int tp = i%nslaves;
 			assignment[tp].push_back(sizedfile[i]);
